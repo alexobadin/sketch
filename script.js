@@ -5,32 +5,31 @@ const square = document.createElement('div');
 square.classList.add('square-box');
 
 let squareNumber = 2500;
+let hold = false;
 
+//Calculate the square root
 function getCssGrid(squareNumber) {
   let square = Math.sqrt(squareNumber);
   return 'repeat' + '(' + square + ',' + '2fr' + ')';
 }
 
-function getChangeColor(event) {
-  let div = event.target.closest('div'); // (1)
+//Change grid template in CSS depending on set parameters and square root
+squareField.style.gridTemplateColumns = getCssGrid(squareNumber);
 
-  if (!div) return; // (2)
-
-  if (!squareField.contains(div)) return; // (3)
-
-  div.classList.add('highlight');
-
-  // (4)
-}
-
+//Add multiply DIVs in root DIV
 for (let i = 1; i <= squareNumber; i++) {
   squareField.appendChild(square.cloneNode(true));
 }
-squareField.style.gridTemplateColumns = getCssGrid(squareNumber);
 
-console.log(getCssGrid(squareNumber));
+//Event delegation for use eventListener for change color every select DIVs
+function getChangeColor(event) {
+  let div = event.target.closest('div');
+  if (!div) return;
+  if (!squareField.contains(div)) return;
+  div.classList.add('highlight');
+}
 
-let hold = false;
+//Solution for drawing effect (click and hold)
 squareField.addEventListener('mousedown', function () {
   hold = true;
 });
