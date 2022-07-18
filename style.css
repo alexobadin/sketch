@@ -16,19 +16,25 @@ html {
   height: 100vh;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 #square-field {
   width: 50rem;
   height: 50rem;
-  background-color: rgb(233, 233, 233);
   display: grid;
+  gap: 1px;
+  background-color: rgba(68, 68, 68, 0.325);
+
   grid-template-columns: repeat(1, 2fr);
+  margin-bottom: 3.2rem;
+  border: 2px solid black;
 }
 .square-box {
   width: 100%;
   height: 100%;
+  background-color: rgb(230, 230, 230);
 }
 
 .highlight {
