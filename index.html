@@ -4,26 +4,37 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./style.css" />
     <title>ETCH-A-SKETCH</title>
   </head>
   <body>
     <div class="centering">
+      <img class="image" src="./image-removebg-preview.png" alt="gameboy" />
       <section class="main-section">
         <div id="square-field"></div>
 
-        <div class="button-right">
-          <input type="color" id="color" name="color" />
-
-          <button class="btn btn--color">Колір</button>
-          <button class="btn btn--random">Випадковий</button>
-          <button class="btn btn--eraser">Стирачка</button>
-          <button class="btn btn--clear">Очистити</button>
-        </div>
-
-        <div class="range-div">
+        <div class="range-class">
           <label for="range" class="range-label">16x16</label>
           <input type="range" id="range" min="1" max="48" value="16" />
+        </div>
+        
+          <input type="color" id="color" name="color" value="#464b55" />
+          <div class="button-right">
+            <div class="main-btn">
+              <button class="btn btn--color">КОЛІР</button>
+              <button class="btn btn--random">РАНДОМ</button>
+              <button class="btn btn--eraser">ЛАСТИК</button>
+              <button class="btn btn--clear">ОЧИСТИТИ</button>
+            </div>
+            <div class="close-btn">
+              
+              <button class="btn btn--on">ВКЛ</button>
+              <button class="btn btn--off">ВИКЛ</button>
+            </div>
+          </div>
         </div>
       </section>
     </div>

@@ -9,6 +9,8 @@ const btnClear = document.querySelector('.btn--clear');
 const colorPicker = document.querySelector('#color');
 const range = document.querySelector('#range');
 const rangeLabel = document.querySelector('.range-label');
+const btnOn = document.querySelector('.btn--on');
+const btnOff = document.querySelector('.btn--off');
 
 let currentMode = 'color';
 
@@ -41,13 +43,14 @@ function colorGrid(e) {
   } else if (currentMode === 'rainbow' && e.target.classList.value === 'color') {
     e.target.style.backgroundColor = getRandomColor();
   } else if (currentMode === 'eraser' && e.target.classList.value === 'color') {
-    e.target.style.backgroundColor = '#fff';
+    e.target.style.backgroundColor = '#939eb031';
   }
 }
 
 //event listeners
 btnClear.addEventListener('click', function () {
   squareField.innerHTML = '';
+  colorPicker.value = '#464b55';
   newGrid();
 });
 
@@ -93,4 +96,7 @@ divSquare.addEventListener('mouseup', function () {
   }
 });
 
-newGrid();
+btnOn.addEventListener('click', newGrid);
+btnOff.addEventListener('click', function () {
+  squareField.innerHTML = '';
+});
