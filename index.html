@@ -8,19 +8,25 @@
     <title>ETCH-A-SKETCH</title>
   </head>
   <body>
-    <section class="centering">
-      <div id="square-field"></div>
+    <div class="centering">
+      <section class="main-section">
+        <div id="square-field"></div>
 
-      <label for="grid-size">Розмір полотна</label>
-      <select id="grid-size">
-        <option value="">--Оберіть варіант--</option>
-        <option value="100">100x100</option>
-        <option value="400">400x400</option>
-        <option value="900">900x900</option>
-        <option value="1600">1600x1600</option>
-        <option value="2500">2500x2500</option>
-      </select>
-    </section>
+        <div class="button-right">
+          <input type="color" id="color" name="color" />
+
+          <button class="btn btn--color">Колір</button>
+          <button class="btn btn--random">Випадковий</button>
+          <button class="btn btn--eraser">Стирачка</button>
+          <button class="btn btn--clear">Очистити</button>
+        </div>
+
+        <div class="range-div">
+          <label for="range" class="range-label">16x16</label>
+          <input type="range" id="range" min="1" max="48" value="16" />
+        </div>
+      </section>
+    </div>
     <script src="./script.js"></script>
   </body>
 </html>

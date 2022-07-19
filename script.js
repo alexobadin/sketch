@@ -1,57 +1,96 @@
 'use strict';
 
 const squareField = document.getElementById('square-field');
-const square = document.createElement('div');
-square.classList.add('square-box');
-const gridSizeSelect = document.getElementById('grid-size');
+const btnColor = document.querySelector('.btn--color');
+const btnRandomCol = document.querySelector('.btn--random');
+const btnEraser = document.querySelector('.btn--eraser');
 
-let squareNumber;
-let hold = false;
+const btnClear = document.querySelector('.btn--clear');
+const colorPicker = document.querySelector('#color');
+const range = document.querySelector('#range');
+const rangeLabel = document.querySelector('.range-label');
 
-function gridTest() {
-  gridSizeSelect.addEventListener('change', function handleChange(event) {
-    squareNumber = event.target.value;
+let currentMode = 'color';
 
-    //Change grid template in CSS depending on set parameters and square root
-    squareField.style.gridTemplateColumns = getCssGrid(squareNumber);
+//create nrw grid
+function newGrid() {
+  squareField.innerHTML = '';
 
-    //remove previous grid
-    squareField.innerHTML = '';
+  squareField.style.setProperty('grid-template-columns', `repeat(${range.value}, 1fr)`);
+  squareField.style.setProperty('grid-template-rows', `repeat(${range.value}, 1fr)`);
 
-    //Add multiply DIVs in root DIV
-    for (let i = 1; i <= squareNumber; i++) {
-      squareField.appendChild(square.cloneNode(true));
-    }
-  });
+  for (let i = 0; i < range.value * range.value; i++) {
+    const div = document.createElement('div');
+    div.classList.add('square');
+    squareField.appendChild(div);
+  }
+}
+//create random color
+function getRandomColor() {
+  const randomR = Math.floor(Math.random() * 256) + 1;
+  const randomG = Math.floor(Math.random() * 256) + 1;
+  const randomB = Math.floor(Math.random() * 256) + 1;
+  return `rgb(${randomR},${randomG},${randomB})`;
 }
 
-//Calculate the square root
-function getCssGrid(squareNumber) {
-  let square = Math.sqrt(squareNumber);
-  return 'repeat' + '(' + square + ',' + '2fr' + ')';
+//create colorGrid
+
+function colorGrid(e) {
+  if (currentMode === 'color' && e.target.classList.value === 'color') {
+    e.target.style.backgroundColor = colorPicker.value;
+  } else if (currentMode === 'rainbow' && e.target.classList.value === 'color') {
+    e.target.style.backgroundColor = getRandomColor();
+  } else if (currentMode === 'eraser' && e.target.classList.value === 'color') {
+    e.target.style.backgroundColor = '#fff';
+  }
 }
 
-gridTest();
-
-//Event delegation for use eventListener for change color every select DIVs
-function getChangeColor(event) {
-  let div = event.target.closest('div');
-  console.log(div);
-  if (!div) return;
-  if (!squareField.contains(div)) return;
-  div.classList.add('highlight');
-}
-
-//Solution for drawing effect (click and hold)
-squareField.addEventListener('mousedown', function () {
-  hold = true;
+//event listeners
+btnClear.addEventListener('click', function () {
+  squareField.innerHTML = '';
+  newGrid();
 });
-squareField.addEventListener('mousemove', function (event) {
-  if (hold === true) {
-    getChangeColor(event);
+
+btnEraser.addEventListener('click', function () {
+  currentMode = 'eraser';
+});
+
+btnColor.addEventListener('click', function () {
+  currentMode = 'color';
+});
+btnRandomCol.addEventListener('click', function () {
+  currentMode = 'rainbow';
+});
+
+range.addEventListener('input', function () {
+  let value = this.value;
+  rangeLabel.textContent = `${value} x${value} `;
+  newGrid();
+});
+
+//mouse draw events
+
+let isDrawing = false;
+const divSquare = document.querySelector('.main-section div');
+
+divSquare.addEventListener('mousedown', function (e) {
+  isDrawing = true;
+  e.target.classList.replace('square', 'color');
+  colorGrid(e);
+});
+
+divSquare.addEventListener('mousemove', function (e) {
+  if (isDrawing) {
+    isDrawing = true;
+    e.target.classList.replace('square', 'color');
+    colorGrid(e);
   }
 });
-window.addEventListener('mouseup', function () {
-  hold = false;
-  console.log(hold);
+
+divSquare.addEventListener('mouseup', function () {
+  if (isDrawing) {
+    isDrawing = false;
+  }
 });
+
+newGrid();
