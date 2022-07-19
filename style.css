@@ -9,7 +9,7 @@
   box-sizing: border-box;
 }
 html {
-  font-size: 62.5%;
+  font-size: 70%;
   -webkit-text-size-adjust: 100%;
   position: relative;
   font-family: 'Press Start 2P', sans-serif;
@@ -17,12 +17,13 @@ html {
 
 body {
   position: relative;
+  background-image: url(./pixel.webp);
 }
 .centering {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 12rem;
+  margin-top: 10rem;
 }
 
 .main-section {
@@ -173,4 +174,14 @@ input[type='color']::-webkit-color-swatch {
 }
 .color {
   border: 0.5px solid rgba(109, 109, 109, 0.773);
+}
+
+@media (max-width: 1350px) {
+  html {
+    font-size: 55%;
+  }
+
+  .centering {
+    margin-top: 9rem;
+  }
 }

@@ -12,19 +12,22 @@ const rangeLabel = document.querySelector('.range-label');
 const btnOn = document.querySelector('.btn--on');
 const btnOff = document.querySelector('.btn--off');
 
+let condition = false;
 let currentMode = 'color';
 
 //create nrw grid
 function newGrid() {
-  squareField.innerHTML = '';
+  if (condition) {
+    squareField.innerHTML = '';
 
-  squareField.style.setProperty('grid-template-columns', `repeat(${range.value}, 1fr)`);
-  squareField.style.setProperty('grid-template-rows', `repeat(${range.value}, 1fr)`);
+    squareField.style.setProperty('grid-template-columns', `repeat(${range.value}, 1fr)`);
+    squareField.style.setProperty('grid-template-rows', `repeat(${range.value}, 1fr)`);
 
-  for (let i = 0; i < range.value * range.value; i++) {
-    const div = document.createElement('div');
-    div.classList.add('square');
-    squareField.appendChild(div);
+    for (let i = 0; i < range.value * range.value; i++) {
+      const div = document.createElement('div');
+      div.classList.add('square');
+      squareField.appendChild(div);
+    }
   }
 }
 //create random color
@@ -67,7 +70,7 @@ btnRandomCol.addEventListener('click', function () {
 
 range.addEventListener('input', function () {
   let value = this.value;
-  rangeLabel.textContent = `${value} x${value} `;
+  rangeLabel.textContent = `${value} x ${value} `;
   newGrid();
 });
 
@@ -96,7 +99,13 @@ divSquare.addEventListener('mouseup', function () {
   }
 });
 
-btnOn.addEventListener('click', newGrid);
+btnOn.addEventListener('click', function () {
+  condition = true;
+  newGrid();
+  this.style.background = 'rgba(255, 0, 0, 0.307)';
+});
 btnOff.addEventListener('click', function () {
+  condition = false;
   squareField.innerHTML = '';
+  btnOn.style.background = '';
 });
