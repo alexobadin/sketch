@@ -92,7 +92,15 @@ body {
   font-weight: 700;
   box-shadow: 0 0 9px rgba(0, 0, 0, 0.26);
   background: #e3e3e3;
-  border: 2px solid #848484;
+  border: 2px solid #9a9a9a;
+}
+
+.btn--active {
+  background: #aaaaaa68;
+}
+
+.btn--on-of {
+  background: rgba(255, 0, 0, 0.307);
 }
 
 .btn:active {
@@ -106,6 +114,20 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.range-label {
+  background-color: rgba(117, 126, 141, 0.527);
+  padding: 0.5rem;
+  border-radius: 10px;
+  color: rgba(69, 74, 84, 0.716);
+  width: 10rem;
+  height: 2.4rem;
+  text-align: center;
+  border: 2px solid rgba(69, 74, 84, 0.847);
+}
+
+.range-label--off {
+  color: rgb(157, 161, 165);
 }
 
 #color {
@@ -149,7 +171,7 @@ input[type='color']::-webkit-color-swatch {
 
 .range-class {
   position: absolute;
-  top: 38rem;
+  top: 37rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

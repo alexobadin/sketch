@@ -14,6 +14,8 @@ const btnOff = document.querySelector('.btn--off');
 
 let condition = false;
 let currentMode = 'color';
+btnOff.classList.add('btn--on-of');
+rangeLabel.classList.add('range-label--off');
 
 //create nrw grid
 function newGrid() {
@@ -59,13 +61,22 @@ btnClear.addEventListener('click', function () {
 
 btnEraser.addEventListener('click', function () {
   currentMode = 'eraser';
+  btnEraser.classList.add('btn--active');
+  btnColor.classList.remove('btn--active');
+  btnRandomCol.classList.remove('btn--active');
 });
 
 btnColor.addEventListener('click', function () {
   currentMode = 'color';
+  btnEraser.classList.remove('btn--active');
+  btnColor.classList.add('btn--active');
+  btnRandomCol.classList.remove('btn--active');
 });
 btnRandomCol.addEventListener('click', function () {
   currentMode = 'rainbow';
+  btnEraser.classList.remove('btn--active');
+  btnColor.classList.remove('btn--active');
+  btnRandomCol.classList.add('btn--active');
 });
 
 range.addEventListener('input', function () {
@@ -82,6 +93,7 @@ const divSquare = document.querySelector('.main-section div');
 divSquare.addEventListener('mousedown', function (e) {
   isDrawing = true;
   e.target.classList.replace('square', 'color');
+
   colorGrid(e);
 });
 
@@ -99,13 +111,47 @@ divSquare.addEventListener('mouseup', function () {
   }
 });
 
+//touch draw events
+// divSquare.addEventListener('touchstart', function (e) {
+//   isDrawing = true;
+//   e.target.classList.replace('square', 'color');
+//   colorGrid(e);
+// });
+
+// divSquare.addEventListener('touchmove', function (e) {
+//   if (isDrawing) {
+//     isDrawing = true;
+//     e.target.classList.replace('square', 'color');
+//     colorGrid(e);
+//   }
+// });
+
+// divSquare.addEventListener('touchend', function () {
+//   if (isDrawing) {
+//     isDrawing = false;
+//   }
+// });
+///
+
 btnOn.addEventListener('click', function () {
   condition = true;
+  rangeLabel.classList.remove('range-label--off');
+
+  btnOn.classList.add('btn--on-of');
+  btnOff.classList.remove('btn--on-of');
+  btnOn;
+  rangeLabel.textContent = `${range.value} x ${range.value}`;
   newGrid();
-  this.style.background = 'rgba(255, 0, 0, 0.307)';
 });
 btnOff.addEventListener('click', function () {
+  btnOn.classList.remove('btn--on-of');
+  btnOff.classList.add('btn--on-of');
+  rangeLabel.classList.add('range-label--off');
+
+  colorPicker.value = '#464b55';
   condition = false;
   squareField.innerHTML = '';
   btnOn.style.background = '';
+
+  rangeLabel.textContent = '';
 });
