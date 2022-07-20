@@ -26,26 +26,6 @@ body {
   margin-top: 10rem;
 }
 
-.main-section {
-  display: flex;
-  flex-direction: column;
-
-  gap: 2rem;
-  justify-content: center;
-  align-items: center;
-}
-#square-field {
-  position: absolute;
-  top: 7rem;
-  width: 28rem;
-  height: 28rem;
-  display: grid;
-
-  background-color: rgba(117, 117, 117, 0.383);
-  grid-template-columns: repeat(1, 2fr);
-  margin-bottom: 2rem;
-  border: 2px solid #515762;
-}
 .image {
   position: absolute;
   top: -2rem;
@@ -58,6 +38,27 @@ body {
   -webkit-user-select: none;
   -ms-user-select: none;
 }
+
+.main-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+#square-field {
+  position: absolute;
+  top: 7rem;
+  width: 28rem;
+  height: 28rem;
+  display: grid;
+  background-color: rgba(117, 117, 117, 0.383);
+  grid-template-columns: repeat(1, 2fr);
+  margin-bottom: 2rem;
+  border: 2px solid #515762;
+}
+
 .main-btn {
   position: absolute;
   top: -1rem;
@@ -75,6 +76,7 @@ body {
   display: flex;
   gap: 1rem;
 }
+
 .button-right {
   position: absolute;
   top: 45rem;
@@ -130,35 +132,6 @@ body {
   color: rgb(157, 161, 165);
 }
 
-#color {
-  position: relative;
-  left: -13rem;
-  appearance: none;
-  top: 46rem;
-  width: 8rem;
-  height: 8rem;
-  border: none;
-  border-radius: 100px;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-input[type='color'] {
-  -webkit-appearance: none;
-  border: none;
-  border-radius: 50rem;
-  outline: 0.5rem solid #dedede;
-  outline-offset: -0.5rem;
-}
-input[type='color']::-webkit-color-swatch-wrapper {
-  padding: 0;
-}
-input[type='color']::-webkit-color-swatch {
-  border: none;
-  border-radius: 50rem;
-}
-
 #range {
   width: 35rem;
   -webkit-appearance: none;
@@ -187,6 +160,35 @@ input[type='color']::-webkit-color-swatch {
   border-radius: 100px;
   background: #000000;
   cursor: pointer;
+}
+
+#color {
+  position: relative;
+  left: -13rem;
+  appearance: none;
+  top: 46rem;
+  width: 8rem;
+  height: 8rem;
+  border: none;
+  border-radius: 100px;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+input[type='color'] {
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 50rem;
+  outline: 0.5rem solid #dedede;
+  outline-offset: -0.5rem;
+}
+input[type='color']::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+input[type='color']::-webkit-color-swatch {
+  border: none;
+  border-radius: 50rem;
 }
 
 .square {

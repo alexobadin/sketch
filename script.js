@@ -41,7 +41,6 @@ function getRandomColor() {
 }
 
 //create colorGrid
-
 function colorGrid(e) {
   if (currentMode === 'color' && e.target.classList.value === 'color') {
     e.target.style.backgroundColor = colorPicker.value;
@@ -86,7 +85,6 @@ range.addEventListener('input', function () {
 });
 
 //mouse draw events
-
 let isDrawing = false;
 const divSquare = document.querySelector('.main-section div');
 
@@ -136,22 +134,18 @@ divSquare.addEventListener('mouseup', function () {
 btnOn.addEventListener('click', function () {
   condition = true;
   rangeLabel.classList.remove('range-label--off');
-
   btnOn.classList.add('btn--on-of');
   btnOff.classList.remove('btn--on-of');
   btnOn;
   rangeLabel.textContent = `${range.value} x ${range.value}`;
   newGrid();
 });
+
 btnOff.addEventListener('click', function () {
+  condition = false;
   btnOn.classList.remove('btn--on-of');
   btnOff.classList.add('btn--on-of');
   rangeLabel.classList.add('range-label--off');
-
   colorPicker.value = '#464b55';
-  condition = false;
   squareField.innerHTML = '';
-  btnOn.style.background = '';
-
-  rangeLabel.textContent = '';
 });
